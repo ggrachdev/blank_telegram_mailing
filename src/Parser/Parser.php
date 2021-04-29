@@ -10,10 +10,10 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class Parser {
 
-    public static function parse(): DataParsing {
+    public static function parse($delay = 2): DataParsing {
         $resultParsing = new DataParsing();
 
-        $urlSite = 'https://citaty.info/category/motiviruyushie-citaty/';
+        $urlSite = 'https://citaty.info/category/motiviruyushie-citaty';
 
         $page = 0;
 
@@ -25,11 +25,11 @@ class Parser {
             curl_setopt($ch, CURLOPT_URL, $urlSite . '?page=' . $page);
             curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17');
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $html = \curl_exec($ch);
 
-            sleep(3);
+            sleep($delay);
 
             if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
                 break;
