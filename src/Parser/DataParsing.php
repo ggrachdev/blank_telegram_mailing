@@ -6,7 +6,7 @@ namespace App\Parser;
  * Данные полученные в результате парсинга
  */
 class DataParsing {
-    protected $data;
+    protected $data = [];
     
     public function getData(): array {
         return $this->data;
