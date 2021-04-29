@@ -14,8 +14,6 @@ class DataParsingSerializer {
     public static function toFile(DataParsing $dataParsing, string $pathFile): bool {
         $result = false;
         
-        dump($pathFile);
-        
         if(\file_exists($pathFile) && \is_writable($pathFile))
         {
             $result = \file_put_contents(
@@ -29,6 +27,15 @@ class DataParsingSerializer {
 
     public static function fromFile(string $pathFile): DataParsing {
         $dataParsing = new DataParsing();
+        
+        $data = json_decode(\file_get_contents($pathFile), true);
+        
+        if(!empty($data)) {
+            foreach ($data as $arDataFile) {
+                $dataParsing->addData($arDataFile['data'], $arDataFile['meta']);
+            }
+        }
+        
         
         return $dataParsing;
     }

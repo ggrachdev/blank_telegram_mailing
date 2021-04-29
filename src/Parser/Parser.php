@@ -20,7 +20,7 @@ class Parser {
         \set_time_limit(600);
 
         while (true) {
-            
+
             $ch = \curl_init();
             curl_setopt($ch, CURLOPT_URL, $urlSite . '?page=' . $page);
             curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17');
@@ -57,13 +57,16 @@ class Parser {
                 if (empty($innerHTML)) {
                     break 2;
                 } else {
-                    $resultParsing->addData(\strip_tags($innerHTML));
+                    $resultParsing->addData(\strip_tags($innerHTML), [
+                        'page' => ($page + 1)
+                    ]);
                 }
             }
             $page++;
 
-            if ($page > 300)
+            if ($page > 300) {
                 break;
+            }
         }
 
         return $resultParsing;
