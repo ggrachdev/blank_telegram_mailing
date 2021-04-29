@@ -1,9 +1,25 @@
-1) Парсер данных в файл 
-Parser
+1) Parser Парсер данных в файл 
+    Parser - логика парсинга
+        parse(): DataParsing
 
-2) Заполнитель из файла в базу
+    DataParsing
+        addData(string $data, array $meta)
+        getData(): array
 
-3) Рандомный селектор из базы
+    DataParsingSerializer:
+        toFile(DataParsing $data, string $pathFile)
+        fromFile(string $pathFile): DataParsing
+
+2) ParsingFixtures Наполнитель из файла в базу
+    ParsingFixtures
+        load()
+
+3) Repository Рандомный селектор из базы
+    DataRepository - selectRandom($count = 10)
 
 4) Телеграм менеджер
-TelegramManager
+    TelegramManager
+    ...
+5) Api
+    Api
+        publicate
