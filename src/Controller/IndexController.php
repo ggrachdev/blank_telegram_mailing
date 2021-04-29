@@ -15,9 +15,12 @@ class IndexController extends AbstractController {
 
         if ($_SERVER['DEBUG_SECRET_KEY'] === $request->get('key')) {
 
-            $parser = new \App\Parser\Parser();
-            $resultParsing = $parser->parse();
-            DataParsingSerializer::toFile($resultParsing, $_SERVER['DOCUMENT_ROOT'] . '/../var/parsing/data.txt');
+            
+        
+        dd($this->getContainer()->get('kernel')->getRootDir());
+//            $parser = new \App\Parser\Parser();
+//            $resultParsing = $parser->parse();
+//            DataParsingSerializer::toFile($resultParsing, $_SERVER['DOCUMENT_ROOT'] . '/../var/parsing/data.txt');
         }
     }
 
