@@ -15,8 +15,9 @@ class IndexController extends AbstractController {
     public function index(Request $request) {
 
         if ($_SERVER['DEBUG_SECRET_KEY'] === $request->get('key')) {
-            $res = DataParsingSerializer::fromFile($_SERVER['DOCUMENT_ROOT'] . '/../var/parsing/data.txt');
-            dd($res);
+            $repository = $this->getDoctrine()->getRepository(\App\Entity\MailingData::class);
+            $mail = $repository->getRandomElement();
+            dump($mail);
             die;
         }
     }

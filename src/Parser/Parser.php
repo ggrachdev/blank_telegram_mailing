@@ -38,7 +38,7 @@ class Parser {
             curl_close($ch);
 
             $crawler = new Crawler($html);
-            $crawler = $crawler->filter('body .node__content .field-item.even.last');
+            $crawler = $crawler->filter('body .node__content .field-name-body .field-item.even.last');
 
             if ($crawler->count() == 0) {
                 break;
