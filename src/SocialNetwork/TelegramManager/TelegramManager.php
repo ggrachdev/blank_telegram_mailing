@@ -2,8 +2,6 @@
 
 namespace App\SocialNetwork\TelegramManager;
 
-use \App\Logging\ChunksLogger\ChunksLogger;
-
 class TelegramManager {
 
     // Максимальное публикуемое количество записей
@@ -18,10 +16,10 @@ class TelegramManager {
     private $chatId;
     private $token;
 
-    public function __construct(string $token, string $chatId, ChunksLogger $logger) {
+    public function __construct(string $token, string $chatId) {
 	$this->token = $token;
 	$this->chatId = $chatId;
-	$this->logger = $logger;
+//	$this->logger = $logger;
     }
 
     /**
@@ -36,7 +34,7 @@ class TelegramManager {
      * @param string $text
      * @return bool
      */
-    public function post(string $text) {
+    public function post(string $text): bool {
 
 	if ($this->postedMessagesCount > self::MAX_COUNT_POSTS_REQUEST) {
 	    return false;
@@ -59,7 +57,7 @@ class TelegramManager {
 
 	    $messageId = $res['result']['message_id'];
 
-	    $this->logger->add($messageId . ' ' . time());
+//	    $this->logger->add($messageId . ' ' . time());
 	}
 
 	return $res['ok'] == true;
@@ -118,7 +116,7 @@ class TelegramManager {
 		}
 	    }
 
-	    $logger->set($messagesIdsForSave);
+//	    $logger->set($messagesIdsForSave);
 	}
     }
 

@@ -17,7 +17,10 @@ class IndexController extends AbstractController {
         if ($_SERVER['DEBUG_SECRET_KEY'] === $request->get('key')) {
             $repository = $this->getDoctrine()->getRepository(\App\Entity\MailingData::class);
             $mail = $repository->getRandomElement();
-            dump($mail);
+
+       
+
+
             die;
         }
     }
