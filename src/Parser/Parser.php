@@ -11,6 +11,7 @@ use Symfony\Component\DomCrawler\Crawler;
 class Parser {
 
     public static function parse($delay = 2): DataParsing {
+        // EXAMPLE PARSE
         $resultParsing = new DataParsing();
 
         $urlSite = 'https://citaty.info/category/motiviruyushie-citaty';

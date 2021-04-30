@@ -1,0 +1,5 @@
+1) php composer.phar install
+2) Указать название БД в env.local
+3) Создать базу php bin/console doctrine:database:create
+4) Запарсить данные php bin/console app:parse:data
+5) Применить миграции php bin/console doctrine:migrations:migrate
